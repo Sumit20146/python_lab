@@ -1,32 +1,3 @@
-"""
-=====================================================================
- SIMPLE REPORT GENERATOR  (Easy Version for 2nd Year Students)
- Topics covered: Decorators | classmethod | Magic Methods (dunder)
-=====================================================================
-This program shows 3 Python OOP concepts using a very simple
-example: making a small "Report" with sections (like a mini
-project report with Introduction, Result, Conclusion etc.)
-
-Concept 1: DECORATORS
-   - A decorator is a function that adds extra work around
-     another function, without changing that function's code.
-   - Example: adding "**" around text, or making text UPPERCASE.
-
-Concept 2: CLASSMETHOD
-   - A normal method works on ONE object (self).
-   - A classmethod works on the CLASS itself (cls), so it can
-     be used to create objects in a special way, or store data
-     shared by ALL objects of that class.
-
-Concept 3: MAGIC METHODS (also called dunder methods, "dunder"
-   = Double UNDERscore, like __init__, __str__)
-   - These are special methods Python calls AUTOMATICALLY when
-     you use normal Python operators/syntax like print(), len(),
-     for loops, +, ==, etc. on your own class.
-=====================================================================
-"""
-
-
 # =====================================================================
 # PART 1: DECORATORS
 # =====================================================================
