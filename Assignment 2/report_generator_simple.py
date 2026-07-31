@@ -1,10 +1,3 @@
-# =====================================================================
-# PART 1: DECORATORS
-# =====================================================================
-
-# A decorator function takes another function as input,
-# and returns a new function with extra behaviour added.
-
 def uppercase(func):
     """Makes the text returned by func() become UPPERCASE."""
     def wrapper(*args, **kwargs):
@@ -30,19 +23,11 @@ def add_border(func):
     return wrapper
 
 
-# =====================================================================
-# PART 2: THE REPORT CLASS
-# =====================================================================
 
 class Report:
     """A simple report made up of a title and a list of sections."""
 
-    # ---------------------------------------------------------
-    # CLASS VARIABLE
-    # This variable is shared by ALL Report objects (not just
-    # one). We use it to store report templates that anyone can
-    # reuse (like a "form" you fill later).
-    # ---------------------------------------------------------
+   
     templates = {}
 
     def __init__(self, title, author="Unknown"):
@@ -50,23 +35,13 @@ class Report:
         self.author = author
         self.sections = []          # list of (heading, content) pairs
 
-    # ---------------------------------------------------------
-    # CLASSMETHOD EXAMPLE 1
-    # Notice: first argument is "cls", not "self".
-    # This method changes data that belongs to the CLASS
-    # (templates dictionary), which is shared by everyone.
-    # ---------------------------------------------------------
+    
     @classmethod
     def add_template(cls, name, section_list):
         cls.templates[name] = section_list
         print(f"Template '{name}' saved with sections: {section_list}")
 
-    # ---------------------------------------------------------
-    # CLASSMETHOD EXAMPLE 2 (Alternate Constructor)
-    # A normal way to create an object is: Report("Title")
-    # This classmethod gives ANOTHER way to create an object,
-    # directly using an already saved template.
-    # ---------------------------------------------------------
+    
     @classmethod
     def create_from_template(cls, template_name, title, author="Unknown"):
         new_report = cls(title, author)   # cls(...) = Report(...)
@@ -74,9 +49,7 @@ class Report:
             new_report.add_section(heading, "content not filled yet")
         return new_report
 
-    # ---------------------------------------------------------
-    # Normal instance method - adds one section to this report
-    # ---------------------------------------------------------
+    
     def add_section(self, heading, content):
         self.sections.append((heading, content))
 
@@ -94,24 +67,13 @@ class Report:
         for heading, content in self.sections:
             total += len(content.split())
         return total
-
-    # ---------------------------------------------------------
-    # This normal method is wrapped with TWO decorators.
-    # Decorators apply bottom-up:
-    #   1. add_border runs first -> adds the dashed lines
-    #   2. bold runs next -> adds ** around the bordered text
-    # ---------------------------------------------------------
++
     @bold
     @add_border
     def summary(self):
         return f"Report: {self.title} | Author: {self.author} | Sections: {len(self.sections)}"
 
-    # =========================================================
-    # MAGIC METHODS
-    # These special methods are never called by us directly.
-    # Python calls them AUTOMATICALLY when we use print(),
-    # len(), for loop, +, == etc. on a Report object.
-    # =========================================================
+
 
     def __str__(self):
         # Called automatically when we do: print(report_object)
@@ -139,9 +101,7 @@ class Report:
         return self.title == other.title and self.sections == other.sections
 
 
-# =====================================================================
-# PART 3: DEMO CODE (this runs only when file is executed directly)
-# =====================================================================
+
 if __name__ == "__main__":
 
     # ---- Using classmethod to save a template ----
